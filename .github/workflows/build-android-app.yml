@@ -1,12 +1,13 @@
 name: Build Android app
 
-on:
-  release:
-    types: [published]
-  push:
-    branches:
-      - "feature/Longchi/new-feature1"
-      - "feature/Longchi/new-feature2"
+on: [push]
+# on:
+#   release:
+#     types: [published]
+#   push:
+#     branches:
+#       - "feature/Longchi/new-feature1"
+#       - "feature/Longchi/new-feature2"
 jobs:
   build:
     runs-on: ubuntu-latest

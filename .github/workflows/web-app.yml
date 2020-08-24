@@ -1,10 +1,10 @@
 name: web app CI and CD
-
-on:
-  pull_request:
-    branches: [master]
-  push:
-    branches: [feature/Longchi/new-feature]
+on: [push]
+# on:
+#   pull_request:
+#     branches: [master]
+#   push:
+#     branches: [feature/Longchi/new-feature]
 
 jobs:
   build:
