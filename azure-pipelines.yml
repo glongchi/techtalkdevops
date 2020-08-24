@@ -1,0 +1,27 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'macOS-latest'
+
+steps:
+
+- task: NodeTool@0
+  displayName: 'Use Node 12.x'
+  inputs:
+    versionSpec: 12.x
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+- task: Npm@1
+  displayName: 'Build ionic-logging-service'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run build-service'
+
+
+

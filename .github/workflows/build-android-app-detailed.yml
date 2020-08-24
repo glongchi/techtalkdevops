@@ -62,5 +62,5 @@ jobs:
       - name: Upload release bundle
         uses: actions/upload-artifact@v1
         with:
-          name: app-release
+          name: app-release--aab
           path: platforms/android/app/build/outputs/bundle/release/app.aab

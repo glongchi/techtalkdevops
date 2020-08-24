@@ -13,7 +13,7 @@ jobs:
       - name: Use coturiv/setup-ionic
         uses: coturiv/setup-ionic@v1
         with:
-          cordova-version: 8
+          cordova-version: 9
       - name: Build
         run: |
           ionic cordova platform add ios
@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: platforms/ios/build/emulator/Ionic\ Conference\ App.app
+          path: platforms/android/app/build/outputs/bundle/release/app.aab
