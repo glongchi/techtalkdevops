@@ -1,0 +1,45 @@
+name: web app CI and CD
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [feature/Longchi/new-feature]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - run: npm ci
+      - name: build demo app
+        run: npm run build:prod
+      - name: Archive Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: drop
+          path: ./www
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: drop
+          path: ./www
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: "default"
+          PROJECT_PATH: "./"

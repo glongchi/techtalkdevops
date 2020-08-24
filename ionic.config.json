@@ -1,5 +1,7 @@
 {
   "name": "techtalkdevops",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
